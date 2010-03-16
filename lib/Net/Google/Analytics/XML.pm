@@ -1,5 +1,5 @@
 package Net::Google::Analytics::XML;
-our $VERSION = '0.09999_01';
+our $VERSION = '0.10000';
 use strict;
 
 use XML::LibXML;

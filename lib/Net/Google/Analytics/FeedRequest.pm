@@ -1,16 +1,10 @@
 package Net::Google::Analytics::FeedRequest;
-our $VERSION = '0.09999_01';
+our $VERSION = '0.10000';
 use strict;
 
 use base qw(Class::Accessor);
 
 __PACKAGE__->mk_accessors(qw(start_index max_results));
-
-sub new {
-    my $package = shift;
-
-    return bless({}, $package);
-}
 
 sub _params {
     return ();
@@ -35,6 +29,18 @@ are implemented in L<Net::Google::Analytics::DataFeedRequest>.
 =head2 start_index
 
 =head2 max_results
+
+=head1 AUTHOR
+
+Nick Wellnhofer <wellnhofer@aevum.de>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) Nick Wellnhofer, 2010
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.0 or,
+at your option, any later version of Perl 5 you may have available.
 
 =cut
 

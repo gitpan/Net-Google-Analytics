@@ -1,10 +1,12 @@
 package Net::Google::Analytics::FeedResponse;
-our $VERSION = '0.09999_01';
+our $VERSION = '0.10000';
 use strict;
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
 
-__PACKAGE__->mk_accessors(qw(total_results entries));
+__PACKAGE__->mk_accessors(qw(
+    total_results start_index items_per_page entries
+));
 
 sub new {
     my $package = shift;
@@ -42,9 +44,29 @@ implemented in L<Net::Google::Analytics::DataFeedResponse>.
 The total number of results for the query, regardless of the number of
 results in the response.
 
+=head2 start_index
+
+The 1-based start index of the entries.
+
+=head2 items_per_page
+
+The number of entries.
+
 =head2 entries
 
-An arrayref of the entries in the feed response.
+An arrayref of the entries.
+
+=head1 AUTHOR
+
+Nick Wellnhofer <wellnhofer@aevum.de>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) Nick Wellnhofer, 2010
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.0 or,
+at your option, any later version of Perl 5 you may have available.
 
 =cut
 
