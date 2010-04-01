@@ -17,4 +17,4 @@ requires:
   perl: 5.008
 resources:
   repository: http://github.com/nwellnhof/Net-Google-Analytics
-version: 0.10000
+version: 0.10001

@@ -1,5 +1,5 @@
 package Net::Google::Analytics::DataFeedRequest;
-our $VERSION = '0.10000';
+our $VERSION = '0.10001';
 use strict;
 
 use base qw(Net::Google::Analytics::FeedRequest);
@@ -24,7 +24,7 @@ sub _params {
 
     my @params = $self->SUPER::_params();
     
-    for(my $i=0; $i<@param_map; $i+=2) {
+    for (my $i=0; $i<@param_map; $i+=2) {
         my $from = $param_map[$i];
         my $to   = $param_map[$i+1];
 

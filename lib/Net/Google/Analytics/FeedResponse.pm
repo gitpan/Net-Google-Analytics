@@ -1,5 +1,5 @@
 package Net::Google::Analytics::FeedResponse;
-our $VERSION = '0.10000';
+our $VERSION = '0.10001';
 use strict;
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);

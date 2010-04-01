@@ -1,5 +1,5 @@
 package Net::Google::Analytics;
-our $VERSION = '0.10000';
+our $VERSION = '0.10001';
 use strict;
 
 use base qw(Class::Accessor);
@@ -26,19 +26,12 @@ sub new {
     return $self;
 }
 
-sub finish {
-    my $self = shift;
-
-    $self->account_feed(undef);
-    $self->data_feed   (undef);
-}
-
 sub auth_params {
     my $self = shift;
 
     my $auth_params = $self->{auth_params} || [];
 
-    if(@_) {
+    if (@_) {
         $self->{auth_params} = [ @_ ];
     }
 
@@ -50,10 +43,10 @@ sub user_agent {
 
     my $ua = $self->{user_agent};
 
-    if(@_ > 1) {
+    if (@_ > 1) {
         $self->{user_agent} = $_[1];
     }
-    elsif(!defined($ua)) {
+    elsif (!defined($ua)) {
         $ua = LWP::UserAgent->new();
         $self->{user_agent} = $ua;
     }
@@ -102,8 +95,6 @@ for the complete API documentation.
  print $entry->dimensions->[0]->value;
  print $entry->metrics->[0]->value;
 
- $analytics->finish();
-
 =head1 CONSTRUCTOR
 
 =head2 new
@@ -125,13 +116,6 @@ The Analytics data feed, an object of type
 L<Net::Google::Analytics::DataFeed>.
 
 =head1 METHODS
-
-=head2 finish
-
- $analytics->finish();
-
-Cleans up circular references between the $analytics object and the feeds.
-This should be called to make sure the object is destroyed after use.
 
 =head2 auth_params
 

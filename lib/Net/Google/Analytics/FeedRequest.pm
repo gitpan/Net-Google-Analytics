@@ -1,5 +1,5 @@
 package Net::Google::Analytics::FeedRequest;
-our $VERSION = '0.10000';
+our $VERSION = '0.10001';
 use strict;
 
 use base qw(Class::Accessor);
