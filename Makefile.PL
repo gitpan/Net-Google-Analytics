@@ -17,14 +17,15 @@ my %WriteMakefileArgs = (
                        'AUTHOR' => 'Nick Wellnhofer <wellnhofer@aevum.de>',
                        'ABSTRACT' => 'Simple interface to the Google Analytics Data Export API',
                        'EXE_FILES' => [],
-                       'VERSION' => '0.10001',
+                       'VERSION' => '0.10002',
                        'LICENSE' => 'perl',
                        'PREREQ_PM' => {
+                                        'XML::LibXML::XPathContext' => '0',
                                         'URI' => '0',
                                         'LWP::UserAgent' => '0',
                                         'ExtUtils::MakeMaker' => '6.11',
-                                        'XML::LibXML' => '0',
-                                        'Class::Accessor' => '0'
+                                        'Class::Accessor' => '0',
+                                        'XML::LibXML' => '0'
                                       }
                      );
 

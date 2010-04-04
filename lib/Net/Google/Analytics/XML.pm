@@ -1,8 +1,9 @@
 package Net::Google::Analytics::XML;
-our $VERSION = '0.10001';
+our $VERSION = '0.10002';
 use strict;
 
 use XML::LibXML;
+use XML::LibXML::XPathContext;
 
 my $parser = XML::LibXML->new();
 my $xpc = XML::LibXML::XPathContext->new();

@@ -1,10 +1,11 @@
 package Net::Google::Analytics::FeedResponse;
-our $VERSION = '0.10001';
+our $VERSION = '0.10002';
 use strict;
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
 
 __PACKAGE__->mk_accessors(qw(
+    is_success code message
     total_results start_index items_per_page entries
 ));
 
@@ -20,6 +21,12 @@ sub _parse_feed {
     $self->total_results(
         $self->_xpc->findvalue('openSearch:totalResults', $feed_node)
     );
+}
+
+sub status_line {
+    my $self = shift;
+
+    return join(' ', $self->code, $self->message);
 }
 
 1;
@@ -39,6 +46,18 @@ implemented in L<Net::Google::Analytics::DataFeedResponse>.
 
 =head1 ACCESSORS
 
+=head2 is_success
+
+Return false in case of an error
+
+=head2 code
+
+The HTTP status code
+
+=head2 message
+
+The HTTP status message
+
 =head2 total_results
 
 The total number of results for the query, regardless of the number of
@@ -55,6 +74,14 @@ The number of entries.
 =head2 entries
 
 An arrayref of the entries.
+
+=head1 METHODS
+
+=head2 status_line
+
+ my $status_line = $res->status_line();
+
+Returns the string "<code> <message>".
 
 =head1 AUTHOR
 

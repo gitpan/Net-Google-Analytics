@@ -1,5 +1,5 @@
 package Net::Google::Analytics::Feed;
-our $VERSION = '0.10001';
+our $VERSION = '0.10002';
 use strict;
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
@@ -43,39 +43,73 @@ sub uri {
     return $self->_uri($req, $req->start_index, $req->max_results);
 }
 
-sub _retrieve_xml {
+sub _retrieve_http {
     my ($self, $req, $start_index, $max_results) = @_;
 
     my $uri = $self->_uri($req, $start_index, $max_results);
-    my $page_res = $self->_analytics->user_agent->get($uri->as_string,
-        'GData-Version' => 2,
-        $self->_analytics->auth_params,
-    );
+    my $analytics = $self->_analytics;
+    my @auth_params = $analytics->auth_params;
+    my $terminal = $analytics->terminal;
 
-    if (!$page_res->is_success) {
-        my $status = $page_res->status_line;
-        die("Analytics API request failed: $status\n");
+    if (!@auth_params && $terminal) {
+        @auth_params = $terminal->auth_params('analytics');
+        $analytics->auth_params(@auth_params);
     }
 
-    return $page_res->content;
+    my $http_res;
+
+    while (1) {
+        $http_res = $analytics->user_agent->get($uri->as_string,
+            'GData-Version' => 2,
+            @auth_params,
+        );
+        last if
+            $http_res->is_success ||
+            $http_res->code ne '401' ||
+            !$terminal;
+
+        @auth_params = $terminal->new_auth_params('analytics',
+            error => $http_res->message,
+        );
+        $analytics->auth_params(@auth_params);
+    }
+
+    return $http_res;
 }
 
 sub retrieve_xml {
     my ($self, $req);
 
-    return $self->_retrieve_xml($req, $req->start_index, $req->max_results);
+    my $http_res = $self->_retrieve_http(
+        $req, $req->start_index, $req->max_results
+    );
+
+    if (!$http_res->is_success) {
+        die('Analytics API request failed: ' . $http_res->status_line);
+    }
+
+    return $http_res->content;
 }
 
 sub _retrieve {
     my ($self, $req, $start_index, $max_results) = @_;
 
-    my $xml = $self->_retrieve_xml($req, $start_index, $max_results);
+    my $http_res = $self->_retrieve_http($req, $start_index, $max_results);
+    my $res = $self->_new_response();
 
-    my $doc = $self->_parser->parse_string($xml);
+    if (!$http_res->is_success) {
+        $res->code($http_res->code);
+        $res->message($http_res->message);
+
+        return $res;
+    }
+
+    $res->is_success(1);
+
+    my $doc = $self->_parser->parse_string($http_res->content);
     my $xpc = $self->_xpc;
     my $feed_node = $xpc->findnodes('/atom:feed', $doc)->get_node(1);
 
-    my $res = $self->_new_response();
     $res->_parse_feed($feed_node);
 
     for my $entry_node ($xpc->findnodes('atom:entry', $feed_node)) {

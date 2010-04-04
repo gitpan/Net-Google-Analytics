@@ -1,5 +1,5 @@
 package Net::Google::Analytics::AccountFeed;
-our $VERSION = '0.10001';
+our $VERSION = '0.10002';
 use strict;
 
 use base qw(Net::Google::Analytics::Feed);
