@@ -1,5 +1,7 @@
 package Net::Google::Analytics::DataFeedRequest;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::DataFeedRequest::VERSION = '0.11000';
+}
 use strict;
 
 use base qw(Net::Google::Analytics::FeedRequest);
@@ -23,6 +25,12 @@ sub _params {
     my $self = shift;
 
     my @params = $self->SUPER::_params();
+
+    for my $name qw(ids dimensions metrics start_date end_date) {
+        my $value = $self->get($name);
+        die("parameter $name is empty")
+            if !defined($value) || $value eq '';
+    }
     
     for (my $i=0; $i<@param_map; $i+=2) {
         my $from = $param_map[$i];

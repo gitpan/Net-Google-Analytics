@@ -1,5 +1,7 @@
 package Net::Google::Analytics::XML;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::XML::VERSION = '0.11000';
+}
 use strict;
 
 use XML::LibXML;

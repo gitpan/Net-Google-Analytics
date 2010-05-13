@@ -1,5 +1,7 @@
 package Net::Google::Analytics::Feed;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::Feed::VERSION = '0.11000';
+}
 use strict;
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
@@ -38,7 +40,7 @@ sub _analytics {
 }
 
 sub uri {
-    my ($self, $req);
+    my ($self, $req) = @_;
 
     return $self->_uri($req, $req->start_index, $req->max_results);
 }
@@ -78,7 +80,7 @@ sub _retrieve_http {
 }
 
 sub retrieve_xml {
-    my ($self, $req);
+    my ($self, $req) = @_;
 
     my $http_res = $self->_retrieve_http(
         $req, $req->start_index, $req->max_results

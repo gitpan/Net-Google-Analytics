@@ -1,5 +1,7 @@
 package Net::Google::Analytics::Dimension;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::Dimension::VERSION = '0.11000';
+}
 use strict;
 
 use base qw(Class::Accessor);

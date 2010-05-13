@@ -1,5 +1,7 @@
 package Net::Google::Analytics::AccountFeedResponse;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::AccountFeedResponse::VERSION = '0.11000';
+}
 use strict;
 
 use base qw(Net::Google::Analytics::FeedResponse);

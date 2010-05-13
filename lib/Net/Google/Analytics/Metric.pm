@@ -1,5 +1,7 @@
 package Net::Google::Analytics::Metric;
-our $VERSION = '0.10002';
+BEGIN {
+  $Net::Google::Analytics::Metric::VERSION = '0.11000';
+}
 use strict;
 
 use base qw(Class::Accessor);

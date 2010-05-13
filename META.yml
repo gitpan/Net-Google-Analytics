@@ -2,15 +2,18 @@
 abstract: 'Simple interface to the Google Analytics Data Export API'
 author:
   - 'Nick Wellnhofer <wellnhofer@aevum.de>'
-generated_by: 'Dist::Zilla version 1.100600'
+build_requires: {}
+configure_requires:
+  ExtUtils::MakeMaker: 6.31
+generated_by: 'Dist::Zilla version 2.101040'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Net-Google-Analytics
+recommends: {}
 requires:
   Class::Accessor: 0
-  ExtUtils::MakeMaker: 6.11
   LWP::UserAgent: 0
   URI: 0
   XML::LibXML: 0
@@ -18,4 +21,4 @@ requires:
   perl: 5.008
 resources:
   repository: http://github.com/nwellnhof/Net-Google-Analytics
-version: 0.10002
+version: 0.11000
