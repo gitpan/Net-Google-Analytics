@@ -1,8 +1,7 @@
 package Net::Google::Analytics::FeedResponse;
-BEGIN {
-  $Net::Google::Analytics::FeedResponse::VERSION = '0.11000';
-}
 use strict;
+
+# ABSTRACT: Google Analytics API feed response
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
 
@@ -33,11 +32,17 @@ sub status_line {
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 Net::Google::Analytics::FeedResponse - Google Analytics API feed response
+
+=head1 VERSION
+
+version 0.11001
 
 =head1 DESCRIPTION
 
@@ -46,7 +51,7 @@ Data Export API. Account feed responses are implemented in
 L<Net::Google::Analytics::AccountFeedResponse>. Data feed responses are
 implemented in L<Net::Google::Analytics::DataFeedResponse>.
 
-=head1 ACCESSORS
+=head1 ATTRIBUTES
 
 =head2 is_success
 
@@ -91,11 +96,14 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) Nick Wellnhofer, 2010
+This software is copyright (c) 2010 by Nick Wellnhofer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.0 or,
-at your option, any later version of Perl 5 you may have available.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
 

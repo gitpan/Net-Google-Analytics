@@ -1,8 +1,7 @@
 package Net::Google::Analytics;
-BEGIN {
-  $Net::Google::Analytics::VERSION = '0.11000';
-}
 use strict;
+
+# ABSTRACT: Simple interface to the Google Analytics Data Export API
 
 use base qw(Class::Accessor);
 
@@ -58,21 +57,17 @@ sub user_agent {
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 Net::Google::Analytics - Simple interface to the Google Analytics Data Export API
 
-=head1 DESCRIPTION
+=head1 VERSION
 
-This module provides a simple, straight-forward interface to the Google
-Analytics Data Export API, using L<LWP::UserAgent> and L<XML::LibXML> for
-the heavy lifting.
-
-See
-L<http://code.google.com/apis/analytics/docs/gdata/gdataDeveloperGuide.html>
-for the complete API documentation.
+version 0.11001
 
 =head1 SYNOPSIS
 
@@ -98,6 +93,16 @@ for the complete API documentation.
  print $entry->dimensions->[0]->value;
  print $entry->metrics->[0]->value;
 
+=head1 DESCRIPTION
+
+This module provides a simple, straight-forward interface to the Google
+Analytics Data Export API, using L<LWP::UserAgent> and L<XML::LibXML> for
+the heavy lifting.
+
+See
+L<http://code.google.com/apis/analytics/docs/gdata/gdataDeveloperGuide.html>
+for the complete API documentation.
+
 =head1 CONSTRUCTOR
 
 =head2 new
@@ -106,7 +111,7 @@ for the complete API documentation.
 
 The constructor doesn't take any arguments.
 
-=head1 ACCESSORS
+=head1 ATTRIBUTES
 
 =head2 account_feed
 
@@ -161,11 +166,14 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) Nick Wellnhofer, 2010
+This software is copyright (c) 2010 by Nick Wellnhofer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.0 or,
-at your option, any later version of Perl 5 you may have available.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
 

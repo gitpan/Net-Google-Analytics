@@ -1,8 +1,7 @@
 package Net::Google::Analytics::DataFeedEntry;
-BEGIN {
-  $Net::Google::Analytics::DataFeedEntry::VERSION = '0.11000';
-}
 use strict;
+
+# ABSTRACT: Google Analytics API data feed entry
 
 use base qw(Class::Accessor Net::Google::Analytics::XML);
 
@@ -34,18 +33,24 @@ sub _parse {
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 Net::Google::Analytics::DataFeedEntry - Google Analytics API data feed entry
+
+=head1 VERSION
+
+version 0.11001
 
 =head1 DESCRIPTION
 
 This package implements data feed entries of the Google Analytics Data Export
 API.
 
-=head1 ACCESSORS
+=head1 ATTRIBUTES
 
 =head2 dimensions
 
@@ -61,11 +66,14 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) Nick Wellnhofer, 2010
+This software is copyright (c) 2010 by Nick Wellnhofer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.0 or,
-at your option, any later version of Perl 5 you may have available.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
 

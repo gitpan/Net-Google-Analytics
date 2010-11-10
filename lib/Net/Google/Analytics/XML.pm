@@ -1,7 +1,4 @@
 package Net::Google::Analytics::XML;
-BEGIN {
-  $Net::Google::Analytics::XML::VERSION = '0.11000';
-}
 use strict;
 
 use XML::LibXML;
@@ -22,4 +19,29 @@ sub _xpc {
 }
 
 1;
+
+
+__END__
+=pod
+
+=head1 NAME
+
+Net::Google::Analytics::XML
+
+=head1 VERSION
+
+version 0.11001
+
+=head1 AUTHOR
+
+Nick Wellnhofer <wellnhofer@aevum.de>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Nick Wellnhofer.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 
