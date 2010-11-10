@@ -26,7 +26,7 @@ my %WriteMakefileArgs = (
     'XML::LibXML' => '0',
     'XML::LibXML::XPathContext' => '0'
   },
-  'VERSION' => '0.11001',
+  'VERSION' => '0.11002',
   'test' => {
     'TESTS' => 't/*.t'
   }

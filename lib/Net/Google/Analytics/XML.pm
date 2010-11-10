@@ -1,4 +1,7 @@
 package Net::Google::Analytics::XML;
+BEGIN {
+  $Net::Google::Analytics::XML::VERSION = '0.11002';
+}
 use strict;
 
 use XML::LibXML;
@@ -30,7 +33,7 @@ Net::Google::Analytics::XML
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 AUTHOR
 

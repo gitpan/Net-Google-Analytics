@@ -1,4 +1,7 @@
 package Net::Google::Analytics;
+BEGIN {
+  $Net::Google::Analytics::VERSION = '0.11002';
+}
 use strict;
 
 # ABSTRACT: Simple interface to the Google Analytics Data Export API
@@ -67,7 +70,7 @@ Net::Google::Analytics - Simple interface to the Google Analytics Data Export AP
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 SYNOPSIS
 

@@ -1,4 +1,7 @@
 package Net::Google::Analytics::FeedRequest;
+BEGIN {
+  $Net::Google::Analytics::FeedRequest::VERSION = '0.11002';
+}
 use strict;
 
 # ABSTRACT: Google Analytics API feed request
@@ -23,7 +26,7 @@ Net::Google::Analytics::FeedRequest - Google Analytics API feed request
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 DESCRIPTION
 

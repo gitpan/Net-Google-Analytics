@@ -1,4 +1,7 @@
 package Net::Google::Analytics::Dimension;
+BEGIN {
+  $Net::Google::Analytics::Dimension::VERSION = '0.11002';
+}
 use strict;
 
 # ABSTRACT: Google Analytics API dimension
@@ -30,7 +33,7 @@ Net::Google::Analytics::Dimension - Google Analytics API dimension
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 DESCRIPTION
 

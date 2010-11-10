@@ -1,4 +1,7 @@
 package Net::Google::Analytics::AccountFeed;
+BEGIN {
+  $Net::Google::Analytics::AccountFeed::VERSION = '0.11002';
+}
 use strict;
 
 # ABSTRACT: Google Analytics API account feed
@@ -36,7 +39,7 @@ Net::Google::Analytics::AccountFeed - Google Analytics API account feed
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 DESCRIPTION
 

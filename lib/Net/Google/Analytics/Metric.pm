@@ -1,4 +1,7 @@
 package Net::Google::Analytics::Metric;
+BEGIN {
+  $Net::Google::Analytics::Metric::VERSION = '0.11002';
+}
 use strict;
 
 # ABSTRACT: Google Analytics API metric
@@ -32,7 +35,7 @@ Net::Google::Analytics::Metric - Google Analytics API metric
 
 =head1 VERSION
 
-version 0.11001
+version 0.11002
 
 =head1 DESCRIPTION
 
