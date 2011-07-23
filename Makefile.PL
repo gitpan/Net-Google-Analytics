@@ -2,9 +2,9 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.008; }
+use 5.008;
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -13,7 +13,7 @@ my %WriteMakefileArgs = (
   'AUTHOR' => 'Nick Wellnhofer <wellnhofer@aevum.de>',
   'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Net-Google-Analytics',
   'EXE_FILES' => [],
@@ -26,7 +26,7 @@ my %WriteMakefileArgs = (
     'XML::LibXML' => '0',
     'XML::LibXML::XPathContext' => '0'
   },
-  'VERSION' => '0.11002',
+  'VERSION' => '0.11003',
   'test' => {
     'TESTS' => 't/*.t'
   }

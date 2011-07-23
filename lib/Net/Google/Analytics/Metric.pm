@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Metric;
 BEGIN {
-  $Net::Google::Analytics::Metric::VERSION = '0.11002';
+  $Net::Google::Analytics::Metric::VERSION = '0.11003';
 }
 use strict;
 
@@ -35,7 +35,7 @@ Net::Google::Analytics::Metric - Google Analytics API metric
 
 =head1 VERSION
 
-version 0.11002
+version 0.11003
 
 =head1 DESCRIPTION
 
@@ -70,7 +70,7 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Nick Wellnhofer.
+This software is copyright (c) 2011 by Nick Wellnhofer.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
