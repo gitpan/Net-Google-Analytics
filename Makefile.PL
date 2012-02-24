@@ -9,26 +9,25 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Simple interface to the Google Analytics Data Export API',
-  'AUTHOR' => 'Nick Wellnhofer <wellnhofer@aevum.de>',
-  'BUILD_REQUIRES' => {},
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "ABSTRACT" => "Simple interface to the Google Analytics Core Reporting API",
+  "AUTHOR" => "Nick Wellnhofer <wellnhofer\@aevum.de>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Net-Google-Analytics',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Net::Google::Analytics',
-  'PREREQ_PM' => {
-    'Class::Accessor' => '0',
-    'LWP::UserAgent' => '0',
-    'URI' => '0',
-    'XML::LibXML' => '0',
-    'XML::LibXML::XPathContext' => '0'
+  "DISTNAME" => "Net-Google-Analytics",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Net::Google::Analytics",
+  "PREREQ_PM" => {
+    "Class::XSAccessor" => "1.05",
+    "JSON" => 0,
+    "LWP::UserAgent" => 0,
+    "URI" => 0
   },
-  'VERSION' => '0.11003',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "2.99_01",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 
