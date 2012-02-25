@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Response;
 {
-  $Net::Google::Analytics::Response::VERSION = '2.99_01';
+  $Net::Google::Analytics::Response::VERSION = '2.99_02';
 }
 use strict;
 
@@ -163,7 +163,7 @@ Net::Google::Analytics::Response - Google Analytics API response
 
 =head1 VERSION
 
-version 2.99_01
+version 2.99_02
 
 =head1 DESCRIPTION
 

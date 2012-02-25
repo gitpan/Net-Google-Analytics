@@ -4,13 +4,11 @@ MANIFEST
 META.yml
 Makefile.PL
 README
-analytics_oauth.pl
 dist.ini
 lib/Net/Google/Analytics.pm
 lib/Net/Google/Analytics/OAuth2.pm
 lib/Net/Google/Analytics/Request.pm
 lib/Net/Google/Analytics/Response.pm
 lib/Net/Google/Analytics/Row.pm
-my_test.pl
 t/01-test.t
 t/release-pod-syntax.t

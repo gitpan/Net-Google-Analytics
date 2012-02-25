@@ -20,4 +20,4 @@ requires:
   perl: 5.008
 resources:
   repository: http://github.com/nwellnhof/Net-Google-Analytics
-version: 2.99_01
+version: 2.99_02

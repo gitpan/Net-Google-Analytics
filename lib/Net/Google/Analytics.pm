@@ -1,6 +1,6 @@
 package Net::Google::Analytics;
 {
-  $Net::Google::Analytics::VERSION = '2.99_01';
+  $Net::Google::Analytics::VERSION = '2.99_02';
 }
 use strict;
 
@@ -176,7 +176,7 @@ Net::Google::Analytics - Simple interface to the Google Analytics Core Reporting
 
 =head1 VERSION
 
-version 2.99_01
+version 2.99_02
 
 =head1 SYNOPSIS
 

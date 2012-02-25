@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Request;
 {
-  $Net::Google::Analytics::Request::VERSION = '2.99_01';
+  $Net::Google::Analytics::Request::VERSION = '2.99_02';
 }
 use strict;
 
@@ -70,7 +70,7 @@ Net::Google::Analytics::Request - Google Analytics API request
 
 =head1 VERSION
 
-version 2.99_01
+version 2.99_02
 
 =head1 DESCRIPTION
 

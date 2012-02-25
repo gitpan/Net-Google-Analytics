@@ -1,6 +1,6 @@
 package Net::Google::Analytics::OAuth2;
 {
-  $Net::Google::Analytics::OAuth2::VERSION = '2.99_01';
+  $Net::Google::Analytics::OAuth2::VERSION = '2.99_02';
 }
 use strict;
 
@@ -106,7 +106,7 @@ Net::Google::Analytics::OAuth2 - OAuth2 for Google Analytics API
 
 =head1 VERSION
 
-version 2.99_01
+version 2.99_02
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Row;
 {
-  $Net::Google::Analytics::Row::VERSION = '2.99_01';
+  $Net::Google::Analytics::Row::VERSION = '2.99_02';
 }
 
 BEGIN {
@@ -74,7 +74,7 @@ Net::Google::Analytics::Row
 
 =head1 VERSION
 
-version 2.99_01
+version 2.99_02
 
 =head1 DESCRIPTION
 
