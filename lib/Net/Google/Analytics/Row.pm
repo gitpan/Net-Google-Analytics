@@ -1,7 +1,9 @@
 package Net::Google::Analytics::Row;
 {
-  $Net::Google::Analytics::Row::VERSION = '2.99_02';
+  $Net::Google::Analytics::Row::VERSION = '3.00';
 }
+
+# ABSTRACT: Base class for Google Analytics API result rows
 
 BEGIN {
     require Class::XSAccessor::Array;
@@ -70,15 +72,19 @@ sub get {
 
 =head1 NAME
 
-Net::Google::Analytics::Row
+Net::Google::Analytics::Row - Base class for Google Analytics API result rows
 
 =head1 VERSION
 
-version 2.99_02
+version 3.00
 
 =head1 DESCRIPTION
 
 Result row class for L<Net::Google::Analytics> web service.
+
+=head1 CONSTRUCTOR
+
+=head2 new
 
 =head1 GENERATED ACCESSORS
 

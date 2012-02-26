@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Request;
 {
-  $Net::Google::Analytics::Request::VERSION = '2.99_02';
+  $Net::Google::Analytics::Request::VERSION = '3.00';
 }
 use strict;
 
@@ -70,11 +70,36 @@ Net::Google::Analytics::Request - Google Analytics API request
 
 =head1 VERSION
 
-version 2.99_02
+version 3.00
+
+=head1 SYNOPSIS
+
+    my $req = $analytics->new_request(
+        ids         => "ga:$profile_id",
+        dimensions  => "ga:medium,ga:source",
+        metrics     => "ga:bounces,ga:visits",
+        filters     => "ga:medium==referral",
+        sort        => "-ga:visits",
+        start_date  => "2011-10-01",
+        end_date    => "2011-10-31",
+        max_results => 5,
+    );
+
+    my $res = $analytics->retrieve($req);
 
 =head1 DESCRIPTION
 
 Request class for L<Net::Google::Analytics> web service.
+
+=head1 CONSTRUCTOR
+
+=head2 new
+
+    my $req = Net::Google::Analytics::Request->new(param => $value, ...);
+    my $req = $analytics->new_request(param => $value, ...);
+
+Creates a new request object with the given parameters. You can also use the
+shorthand L<Net::Google::Analytics/new_request>.
 
 =head1 ACCESSORS
 
