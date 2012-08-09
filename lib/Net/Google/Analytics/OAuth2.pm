@@ -1,6 +1,6 @@
 package Net::Google::Analytics::OAuth2;
 {
-  $Net::Google::Analytics::OAuth2::VERSION = '3.00';
+  $Net::Google::Analytics::OAuth2::VERSION = '3.01';
 }
 use strict;
 
@@ -106,7 +106,7 @@ Net::Google::Analytics::OAuth2 - OAuth2 for Google Analytics API
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 SYNOPSIS
 
@@ -149,7 +149,7 @@ for installed applications.
 
 =head2 authorize_url
 
-    my $url = $oauth->authorize_url
+    my $url = $oauth->authorize_url;
 
 Returns a Google URL where the user can authenticate, authorize the
 application and retrieve an authorization code.

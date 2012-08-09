@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Response;
 {
-  $Net::Google::Analytics::Response::VERSION = '3.00';
+  $Net::Google::Analytics::Response::VERSION = '3.01';
 }
 use strict;
 
@@ -170,7 +170,7 @@ Net::Google::Analytics::Response - Google Analytics API response
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 SYNOPSIS
 
@@ -231,7 +231,7 @@ results in the response.
 
 =head2 start_index
 
-The 1-based start index of the entries.
+The 1-based start index of the result rows.
 
 =head2 items_per_page
 
@@ -239,11 +239,11 @@ The number of rows returned.
 
 =head2 contains_sampled_data
 
-Return true if the results contain sampled data.
+Returns true if the results contain sampled data.
 
 =head2 profile_info
 
-Returns a hashref containing information about the analytics profile.
+A hashref containing information about the analytics profile.
 
 =head2 rows
 
@@ -273,9 +273,9 @@ converted to lower case with underscores.
 
     $res->project(\@proj_dim_names, \&projection);
 
-Projects the dimension values of every entry to a set of new dimension values
-using subroutine reference \&projection. The metrics of entries that are
-mapped to the same dimension values are summed up.
+Projects the dimension values of every result row to new dimension values using
+subroutine reference \&projection. The metrics of rows that are mapped to the
+same dimension values are summed up.
 
 Argument \@proj_dim_names is an arrayref containing the names of the
 new dimensions.

@@ -1,6 +1,6 @@
 package Net::Google::Analytics;
 {
-  $Net::Google::Analytics::VERSION = '3.00';
+  $Net::Google::Analytics::VERSION = '3.01';
 }
 use strict;
 
@@ -144,6 +144,7 @@ sub retrieve_paged {
                 $remaining_items : $max_items_per_page;
 
         my $page = $self->_retrieve($req, $start_index, $max_results);
+        return $page if !$page->is_success;
 
         if (!defined($res)) {
             $res = $page;
@@ -152,14 +153,17 @@ sub retrieve_paged {
             push(@{ $res->rows }, @{ $page->rows });
         }
 
-        my $items_per_page = $page->items_per_page;
-        last if $items_per_page < $max_results;
+        my $num_items = @{ $page->rows };
+        last if $num_items < $max_results;
 
-        $remaining_items -= $items_per_page if defined($remaining_items);
-        $start_index     += $items_per_page;
+        $remaining_items -= $num_items if defined($remaining_items);
+        $start_index     += $num_items;
     }
 
-    $res->items_per_page(scalar(@{ $res->rows }));
+    my $total_items = @{ $res->rows };
+    $res->items_per_page($total_items);
+    # The total result count of the first page isn't always accurate
+    $res->total_results($total_items);
 
     return $res;
 }
@@ -176,7 +180,7 @@ Net::Google::Analytics - Simple interface to the Google Analytics Core Reporting
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 SYNOPSIS
 
@@ -251,9 +255,7 @@ the legacy v2 API.
 
 L<Net::Google::Analytics::OAuth2> provides for easy authentication and
 authorization using OAuth 2.0. First, you have to register your application
-through the Google APIs Console:
-
-L<https://code.google.com/apis/console/>
+through the L<Google APIs Console|https://code.google.com/apis/console/>.
 
 You will receive a client id and a client secret for your application in the
 APIs Console. For command line testing, you should use "Installed application"

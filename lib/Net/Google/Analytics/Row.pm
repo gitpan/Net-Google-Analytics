@@ -1,7 +1,8 @@
 package Net::Google::Analytics::Row;
 {
-  $Net::Google::Analytics::Row::VERSION = '3.00';
+  $Net::Google::Analytics::Row::VERSION = '3.01';
 }
+use strict;
 
 # ABSTRACT: Base class for Google Analytics API result rows
 
@@ -76,7 +77,7 @@ Net::Google::Analytics::Row - Base class for Google Analytics API result rows
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 DESCRIPTION
 
@@ -99,8 +100,8 @@ case is converted to lower case with underscores.
 
 =head2 get
 
-    my $value = $res->get($dimension_name);
-    my $value = $res->get($metric_name);
+    my $value = $row->get($dimension_name);
+    my $value = $row->get($metric_name);
 
 Returns the value of the dimension or metric with the given name. Use names
 without the 'ga:' prefix and converted to lower case with underscores.
