@@ -1,6 +1,6 @@
 package Net::Google::Analytics::Response;
 {
-  $Net::Google::Analytics::Response::VERSION = '3.01';
+  $Net::Google::Analytics::Response::VERSION = '3.02';
 }
 use strict;
 
@@ -71,6 +71,12 @@ sub _parse_column_name {
     $res =~ s/[A-Z]/'_' . lc($&)/ge;
 
     return $res;
+}
+
+sub num_rows {
+    my $self = shift;
+
+    return scalar(@{ $self->rows });
 }
 
 sub metrics {
@@ -155,12 +161,22 @@ sub project {
         }
     }
 
-    $self->rows([ values(%proj_rows) ]);
+    my @rows = values(%proj_rows);
+
+    return Net::Google::Analytics::Response->new(
+        is_success      => 1,
+        total_results   => scalar(@rows),
+        start_index     => 1,
+        items_per_page  => scalar(@rows),
+        rows            => \@rows,
+        _totals         => $self->_totals,
+        _column_headers => \@proj_column_headers,
+    );
 }
 
 1;
 
-
+__END__
 
 =pod
 
@@ -170,7 +186,7 @@ Net::Google::Analytics::Response - Google Analytics API response
 
 =head1 VERSION
 
-version 3.01
+version 3.02
 
 =head1 SYNOPSIS
 
@@ -178,7 +194,7 @@ version 3.01
     die("GA error: " . $res->error_message) if !$res->is_success;
 
     print
-        "Results: 1 - ", $res->items_per_page,
+        "Results: 1 - ", $res->num_rows,
         " of ", $res->total_results, "\n\n";
 
     for my $row (@{ $res->rows }) {
@@ -245,6 +261,10 @@ Returns true if the results contain sampled data.
 
 A hashref containing information about the analytics profile.
 
+=head2 num_rows
+
+The number of rows on this result page.
+
 =head2 rows
 
 An arrayref of result rows of type L<Net::Google::Analytics::Row>.
@@ -271,7 +291,7 @@ converted to lower case with underscores.
 
 =head2 project
 
-    $res->project(\@proj_dim_names, \&projection);
+    my $projected = $res->project(\@proj_dim_names, \&projection);
 
 Projects the dimension values of every result row to new dimension values using
 subroutine reference \&projection. The metrics of rows that are mapped to the
@@ -284,10 +304,12 @@ The projection subroutine takes as single argument a
 L<Net::Google::Analytics::Row> object and must return an array of dimension
 values.
 
+Returns a new response object.
+
 The following example maps a single dimension of type ga:pagePath to
 categories.
 
-    $res->project([ 'category' ], sub {
+    my $projected = $res->project([ 'category' ], sub {
         my $row = shift;
 
         my $page_path = $row->get_page_path;
@@ -304,14 +326,9 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Nick Wellnhofer.
+This software is copyright (c) 2014 by Nick Wellnhofer.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
-

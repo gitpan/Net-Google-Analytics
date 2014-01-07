@@ -1,6 +1,6 @@
 package Net::Google::Analytics::OAuth2;
 {
-  $Net::Google::Analytics::OAuth2::VERSION = '3.01';
+  $Net::Google::Analytics::OAuth2::VERSION = '3.02';
 }
 use strict;
 
@@ -23,7 +23,8 @@ sub new {
 }
 
 sub authorize_url {
-    my $self = shift;
+    my $self         = shift;
+    my $extra_params = @_ == 1 ? $_[0] : { @_ };
 
     my $uri = URI->new('https://accounts.google.com/o/oauth2/auth');
     $uri->query_form(
@@ -31,6 +32,7 @@ sub authorize_url {
         client_id     => $self->{client_id},
         redirect_uri  => $self->{redirect_uri},
         scope         => 'https://www.googleapis.com/auth/analytics.readonly',
+        %$extra_params,
     );
 
     return $uri->as_string;
@@ -96,7 +98,7 @@ EOF
 
 1;
 
-
+__END__
 
 =pod
 
@@ -106,7 +108,7 @@ Net::Google::Analytics::OAuth2 - OAuth2 for Google Analytics API
 
 =head1 VERSION
 
-version 3.01
+version 3.02
 
 =head1 SYNOPSIS
 
@@ -149,10 +151,13 @@ for installed applications.
 
 =head2 authorize_url
 
-    my $url = $oauth->authorize_url;
+    my $url = $oauth->authorize_url(%extra_params);
+    my $url = $oauth->authorize_url(\%extra_params);
 
 Returns a Google URL where the user can authenticate, authorize the
-application and retrieve an authorization code.
+application and retrieve an authorization code. %extra_params can be used to
+pass additional authorization parameters. See
+L<https://developers.google.com/accounts/docs/OAuth2WebServer#formingtheurl>.
 
 =head2 get_access_token
 
@@ -195,14 +200,9 @@ Nick Wellnhofer <wellnhofer@aevum.de>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Nick Wellnhofer.
+This software is copyright (c) 2014 by Nick Wellnhofer.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
-

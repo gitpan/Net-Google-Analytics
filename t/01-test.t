@@ -1,7 +1,7 @@
 #!perl -w
 use strict;
 
-use Test::More tests => 33;
+use Test::More tests => 44;
 
 our $expect_url;
 our $content;
@@ -149,6 +149,7 @@ $res = $analytics->retrieve($req);
 ok($res, 'retrieve data');
 ok($res->is_success, 'retrieve success');
 
+is($res->num_rows, 5, 'num_rows');
 is($res->total_results, 6451, 'total_results');
 is($res->start_index, 1, 'start_index');
 is($res->items_per_page, 5, 'items_per_page');
@@ -169,7 +170,6 @@ is_deeply(\@dimensions, [ qw(medium source) ]);
 
 $rows = $res->rows;
 ok($rows, 'rows');
-
 is(@$rows, 5, 'count rows');
 
 is($rows->[0]->get_medium, 'referral');
@@ -181,7 +181,9 @@ is($rows->[3]->get('new_visits'), '2968');
 is($res->totals('bounces'), '101535');
 is($res->totals('new_visits'), '136540');
 
-$res->project([ 'domain_style' ], sub {
+# Test projection
+
+my $projection = $res->project([ 'domain_style' ], sub {
     my $row = shift;
 
     return $row->get_source =~ /\.co\.[a-z]+\z/i ?
@@ -189,10 +191,22 @@ $res->project([ 'domain_style' ], sub {
         'other';
 });
 
-$rows = $res->rows;
-ok($rows, 'rows');
+ok($projection, 'projection');
+ok($projection->is_success, 'is_success of projection');
+is($projection->num_rows, 2, 'num_rows of projection');
+is($projection->total_results, 2, 'total_results of projection');
+is($projection->start_index, 1, 'start_index of projection');
+is($projection->items_per_page, 2, 'items_per_page of projection');
 
-is(@$rows, 2, 'count rows');
+@metrics = $projection->metrics;
+is_deeply(\@metrics, [ qw(bounces new_visits) ], 'metrics of projection');
+
+@dimensions = $projection->dimensions;
+is_deeply(\@dimensions, [ qw(domain_style) ], 'dimensions of projection');
+
+$rows = $projection->rows;
+ok($rows, 'rows of projection');
+is(@$rows, 2, 'count rows of projection');
 
 for my $row (@$rows) {
     if ($row->get_domain_style eq 'dot-co-domain') {
@@ -204,4 +218,7 @@ for my $row (@$rows) {
         is($row->get_bounces,  76_922);
     }
 }
+
+is($projection->totals('bounces'), '101535', 'total bounces of proj');
+is($projection->totals('new_visits'), '136540', 'total new_visits of proj');
 

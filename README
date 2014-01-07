@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Net-Google-Analytics,
-version 3.01:
+version 3.02:
 
   Simple interface to the Google Analytics Core Reporting API
 
-This software is copyright (c) 2012 by Nick Wellnhofer.
+This software is copyright (c) 2014 by Nick Wellnhofer.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
